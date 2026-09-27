@@ -124,8 +124,9 @@ function readForm(){
 function writeForm(s){
   suppressSave=true;
   state=s||{};
-  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v??''};
-  const chk=(id,v)=>{const e=document.getElementById(id);if(e)e.checked=!!v};
+  const isEditing=id=>document.activeElement?.id===id;
+  const set=(id,v)=>{const e=document.getElementById(id);if(e&&!isEditing(id))e.value=v??''};
+  const chk=(id,v)=>{const e=document.getElementById(id);if(e&&!isEditing(id))e.checked=!!v};
   set('dateEffet',state.date_effet);set('heureEffet',state.heure_effet);set('limitesAbsolues',state.limites_absolues);set('limitesSeance',state.limites_seance);set('pointsDiscussion',state.points_discussion);
   chk('consequencePrivilege',state.consequence_privilege);chk('consequenceDefi',state.consequence_defi);chk('consequenceSymbolique',state.consequence_symbolique);chk('consequenceAutreCheck',state.consequence_autre_check);
   set('consequenceAutre',state.consequence_autre);set('regleNumero',state.regle_numero);set('regleSupplementaire',state.regle_supplementaire);
