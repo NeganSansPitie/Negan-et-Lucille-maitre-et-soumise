@@ -55,8 +55,8 @@ body{overflow-x:hidden}.app{min-height:100vh;display:flex;align-items:center;jus
 <h2 style="text-align:center">SIGNATURES</h2>
 <p class="hint">Les signatures sont dessinées directement sur l’écran puis enregistrées avec le pacte.</p>
 <div class="signature-grid">
-  <div class="signature-box"><h3>Signature de Negan</h3><canvas id="sigNegan" class="signature-canvas"></canvas><div class="signature-actions"><button type="button" onclick="clearSignature('negan')">EFFACER</button><button type="button" onclick="saveSignature('negan')">VALIDER</button></div><div id="sigStatusNegan" class="signature-status"></div></div>
-  <div class="signature-box"><h3>Signature de Lucille</h3><canvas id="sigLucille" class="signature-canvas"></canvas><div class="signature-actions"><button type="button" onclick="clearSignature('lucille')">EFFACER</button><button type="button" onclick="saveSignature('lucille')">VALIDER</button></div><div id="sigStatusLucille" class="signature-status"></div></div>
+  <div class="signature-box"><h3>Negan — Le Maître</h3><div class="field"><label for="mentionNegan">Mention</label><input id="mentionNegan" type="text" value="Lu et approuvé" autocomplete="off" style="width:100%;padding:14px;background:#0c0b0b;color:#f4eee7;border:1px solid #5c493a;border-radius:5px;font:16px Arial,sans-serif"></div><div id="sigStatusNegan" class="signature-status"></div></div>
+  <div class="signature-box"><h3>Lucille — La Soumise</h3><div class="field"><label for="mentionLucille">Mention</label><input id="mentionLucille" type="text" value="Lu et approuvé" autocomplete="off" style="width:100%;padding:14px;background:#0c0b0b;color:#f4eee7;border:1px solid #5c493a;border-radius:5px;font:16px Arial,sans-serif"></div><div id="sigStatusLucille" class="signature-status"></div></div>
 </div>
 <div class="divider"></div><div class="end"><div class="seal">◈</div><h2>FIN DU PACTE</h2><p>Ce règlement reste fondé sur la confiance, le respect, la communication et le consentement mutuel.</p><p class="hint">Les signatures sont volontairement laissées hors de cette application et peuvent être réalisées séparément entre les deux partenaires.</p></div></div></section>
 </main></div>
@@ -90,7 +90,7 @@ window.startPacte=startPacte;
 async function initializeApp(){
   if(initialized)return;
   initialized=true;
-  setTimeout(()=>{setupCanvas('sigNegan');setupCanvas('sigLucille');loadData();startRealtime()},50);
+  setTimeout(()=>{loadData();startRealtime()},50);
 }
 function showApp(){loginScreen.style.display='none';account.style.display='block';initializeApp()}
 window.go=go;
@@ -145,77 +145,23 @@ async function loadData(){
   const {data,error}=await supabase.from('pacte').select('*').eq('id',1).single();
   if(error){console.error(error);return}
   writeForm(data?.contenu||{});
-  drawSaved('negan',data?.signature_negan);
-  drawSaved('lucille',data?.signature_lucille);
+  document.getElementById('mentionNegan').value=data?.signature_negan||'Lu et approuvé';
+  document.getElementById('mentionLucille').value=data?.signature_lucille||'Lu et approuvé';
 }
 function dataUrlFromCanvas(canvas){return canvas.toDataURL('image/png')}
-async function saveSignature(who){
-  const canvas=document.getElementById(who==='negan'?'sigNegan':'sigLucille');
-  const data=dataUrlFromCanvas(canvas);
-  if(data.length<2000){document.getElementById(who==='negan'?'sigStatusNegan':'sigStatusLucille').textContent='Dessinez votre signature avant de valider.';return}
+async function saveMention(who){
+  const input=document.getElementById(who==='negan'?'mentionNegan':'mentionLucille');
   const col=who==='negan'?'signature_negan':'signature_lucille';
   const dateCol=who==='negan'?'date_signature_negan':'date_signature_lucille';
-  const payload={[col]:data,[dateCol]:new Date().toISOString()};
+  const value=input.value.trim();
+  if(!value)return;
+  const payload={[col]:value,[dateCol]:new Date().toISOString()};
   const {error}=await supabase.from('pacte').update(payload).eq('id',1);
   const el=document.getElementById(who==='negan'?'sigStatusNegan':'sigStatusLucille');
-  el.textContent=error?'Erreur de sauvegarde.':'Signature enregistrée ✓';
+  el.textContent=error?'Erreur de sauvegarde.':'Mention enregistrée ✓';
   if(error)console.error(error);
 }
-window.saveSignature=saveSignature;
-window.clearSignature=function(who){
-  const canvas=document.getElementById(who==='negan'?'sigNegan':'sigLucille');
-  const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);
-  document.getElementById(who==='negan'?'sigStatusNegan':'sigStatusLucille').textContent='';
-};
-function setupCanvas(id){
-  const canvas=document.getElementById(id); if(!canvas)return;
-  const dpr=Math.max(1,window.devicePixelRatio||1);
-  const ctx=canvas.getContext('2d');
-  function resize(){
-    const rect=canvas.getBoundingClientRect();
-    const saved=canvas.width>0&&canvas.height>0?canvas.toDataURL('image/png'):null;
-    canvas.width=Math.max(1,Math.round(rect.width*dpr));
-    canvas.height=Math.max(1,Math.round(rect.height*dpr));
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    ctx.lineWidth=2.5;ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='#1b1714';
-    if(saved){
-      const im=new Image();
-      im.onload=()=>ctx.drawImage(im,0,0,rect.width,rect.height);
-      im.src=saved;
-    }
-  }
-  resize();
-  window.addEventListener('resize',resize);
-  canvas.style.touchAction='none';
-  canvas.style.webkitUserSelect='none';
-  canvas.style.userSelect='none';
-  let drawing=false;
-  function point(e){
-    const rect=canvas.getBoundingClientRect();
-    return {x:e.clientX-rect.left,y:e.clientY-rect.top};
-  }
-  function start(e){
-    e.preventDefault(); e.stopPropagation();
-    drawing=true;
-    if(canvas.setPointerCapture && e.pointerId!==undefined){try{canvas.setPointerCapture(e.pointerId)}catch(_){}}
-    const p=point(e);ctx.beginPath();ctx.moveTo(p.x,p.y);
-  }
-  function move(e){
-    if(!drawing)return;
-    e.preventDefault(); e.stopPropagation();
-    const p=point(e);ctx.lineTo(p.x,p.y);ctx.stroke();
-  }
-  function end(e){
-    if(!drawing)return;
-    e.preventDefault(); drawing=false;ctx.closePath();
-    if(canvas.releasePointerCapture && e.pointerId!==undefined){try{canvas.releasePointerCapture(e.pointerId)}catch(_){}}
-  }
-  canvas.addEventListener('pointerdown',start,{passive:false});
-  canvas.addEventListener('pointermove',move,{passive:false});
-  canvas.addEventListener('pointerup',end,{passive:false});
-  canvas.addEventListener('pointercancel',end,{passive:false});
-  canvas.addEventListener('pointerleave',end,{passive:false});
-}
+window.saveMention=saveMention;
 function drawSaved(who,data){
   if(!data)return;
   const canvas=document.getElementById(who==='negan'?'sigNegan':'sigLucille');if(!canvas)return;
@@ -225,7 +171,7 @@ function drawSaved(who,data){
 async function startRealtime(){
   await supabase.channel('pacte-live').on('postgres_changes',{event:'UPDATE',schema:'public',table:'pacte',filter:'id=eq.1'},payload=>{
     writeForm(payload.new.contenu||{});
-    drawSaved('negan',payload.new.signature_negan);drawSaved('lucille',payload.new.signature_lucille);
+    document.getElementById('mentionNegan').value=payload.new.signature_negan||'Lu et approuvé';document.getElementById('mentionLucille').value=payload.new.signature_lucille||'Lu et approuvé';
   }).subscribe();
 }
 document.getElementById('loginForm').addEventListener('submit',async e=>{
