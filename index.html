@@ -24,7 +24,7 @@ body{overflow-x:hidden}.app{min-height:100vh;display:flex;align-items:center;jus
 </head>
 <body>
 
-<div class="login-screen" id="loginScreen">
+<div class="login-screen" id="loginScreen" style="display:none">
   <div class="login-card">
     <div class="orn">◆────────────── ◈ ──────────────◆</div>
     <h1>Le Pacte</h1>
@@ -41,7 +41,7 @@ body{overflow-x:hidden}.app{min-height:100vh;display:flex;align-items:center;jus
 <div class="app"><main class="book">
 <section class="page active cover">
 <img src="https://raw.githubusercontent.com/NeganSansPitie/neganlab/2e3fbcedf2a8e00c2c117b46c6a77670e4aafbcf/pages/5A45ACAD-D283-4D2B-9F6B-230FFDE9493D.png" alt="Negan & Lucille — couverture">
-<div class="cover-title">LE PACTE DU MAÎTRE<br>&amp; DE LA SOUMISE</div><div class="cover-sub">NEGAN • LUCILLE</div><button class="start" onclick="go(1)">COMMENCER →</button>
+<div class="cover-title">LE PACTE DU MAÎTRE<br>&amp; DE LA SOUMISE</div><div class="cover-sub">NEGAN • LUCILLE</div><button class="start" onclick="startPacte()">COMMENCER →</button>
 </section>
 <section class="page"><div class="paper"><div class="orn">◆────────────── ◈ ──────────────◆</div><div class="eyebrow">Contrat des règles du Maître</div><h1>Negan &amp; Lucille</h1><div class="rolegrid"><div class="role"><div class="symbol">◈</div><strong>Negan</strong><span>Le Maître</span></div><div class="role"><div class="symbol">◉</div><strong>Lucille</strong><span>La Soumise</span></div></div><div class="quote">Ce contrat définit les règles de notre jeu BDSM et les engagements que nous choisissons librement d’accepter. Il s’agit d’un jeu basé sur la confiance, le respect, la communication et le consentement mutuel.</div><p class="hint">Les règles ci-dessous constituent le règlement de référence du jeu entre les deux partenaires.</p></div></section>
 <section class="page"><div class="paper"><div class="eyebrow">Article 1</div><h1>L’ENGAGEMENT</h1><div class="rule"><p>La Soumise reconnaît entrer volontairement dans ce jeu avec le Maître.</p><p>Le Maître s’engage à respecter la personne, les limites et le bien-être de sa Soumise.</p><p>La relation de domination n’existe que dans le cadre du jeu et ne donne aucun droit réel de contrôle sur la vie, les choix ou les décisions personnelles de la Soumise.</p></div><div class="divider"></div><div class="eyebrow">Article 2</div><h1>LES RÈGLES DE LA SOUMISE</h1><ol><li>Respecter les consignes du Maître.</li><li>Répondre honnêtement aux questions du Maître.</li><li>Prévenir immédiatement le Maître lorsqu’une règle ou une situation devient inconfortable.</li><li>Respecter les horaires et rendez-vous convenus.</li><li>Conserver une attitude respectueuse envers le Maître.</li><li>Ne pas volontairement provoquer ou tester les limites établies sans accord préalable.</li><li>Accepter les conséquences prévues dans le cadre du jeu lorsqu’une règle est volontairement enfreinte.</li><li>Communiquer ses limites avant ou pendant le jeu lorsque cela est nécessaire.</li></ol></div></section>
@@ -69,13 +69,30 @@ const SUPABASE_KEY='sb_publishable_OOL9AZ_aAkUkP-HIUxLgnA_6NkWJ85Z';
 const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
 
 const pages=[...document.querySelectorAll('.page')];
-let current=0, state={}, saveTimer=null, suppressSave=false;
+let current=0, state={}, saveTimer=null, suppressSave=false, initialized=false;
 const loginScreen=document.getElementById('loginScreen');
 const account=document.getElementById('account');
 const loginError=document.getElementById('loginError');
 
 function setLoginError(msg){loginError.textContent=msg;loginError.style.display='block'}
-function showApp(){loginScreen.style.display='none';account.style.display='block';go(0)}
+async function startPacte(){
+  const {data:{session}}=await supabase.auth.getSession();
+  if(session){
+    showApp();
+    go(1);
+  }else{
+    loginError.style.display='none';
+    loginScreen.style.display='flex';
+    setTimeout(()=>document.getElementById('loginEmail').focus(),50);
+  }
+}
+window.startPacte=startPacte;
+async function initializeApp(){
+  if(initialized)return;
+  initialized=true;
+  setTimeout(()=>{setupCanvas('sigNegan');setupCanvas('sigLucille');loadData();startRealtime()},50);
+}
+function showApp(){loginScreen.style.display='none';account.style.display='block';initializeApp()}
 window.go=go;
 function go(n){
   if(n<0)n=0;if(n>=pages.length)n=pages.length-1;
@@ -178,11 +195,12 @@ document.getElementById('loginForm').addEventListener('submit',async e=>{
   const email=document.getElementById('loginEmail').value.trim(),password=document.getElementById('loginPassword').value;
   const {error}=await supabase.auth.signInWithPassword({email,password});
   if(error)setLoginError('Connexion impossible. Vérifiez votre adresse e-mail et votre mot de passe.');
+  else { loginScreen.style.display='none'; account.style.display='block'; initializeApp(); go(1); }
 });
 document.getElementById('logout').addEventListener('click',async()=>{await supabase.auth.signOut();location.reload()});
 supabase.auth.onAuthStateChange(async(event,session)=>{
-  if(session){showApp();setTimeout(()=>{setupCanvas('sigNegan');setupCanvas('sigLucille');loadData();startRealtime()},50)}
-  else{loginScreen.style.display='flex';account.style.display='none'}
+  if(session){showApp()}
+  else{loginScreen.style.display='none';account.style.display='none';pages[current].classList.add('active');go(0)}
 });
 document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&!e.target.matches('input,textarea'))go(current+1);if(e.key==='ArrowLeft'&&!e.target.matches('input,textarea'))go(current-1)});
 </script>
