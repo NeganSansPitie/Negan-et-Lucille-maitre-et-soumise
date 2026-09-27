@@ -76,6 +76,7 @@ const loginError=document.getElementById('loginError');
 
 function setLoginError(msg){loginError.textContent=msg;loginError.style.display='block'}
 function showApp(){loginScreen.style.display='none';account.style.display='block';go(0)}
+window.go=go;
 function go(n){
   if(n<0)n=0;if(n>=pages.length)n=pages.length-1;
   pages[current].classList.remove('active');current=n;pages[current].classList.add('active');
