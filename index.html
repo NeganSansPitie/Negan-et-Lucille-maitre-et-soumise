@@ -18,9 +18,26 @@ body{overflow-x:hidden}.app{min-height:100vh;display:flex;align-items:center;jus
 .start{position:absolute;z-index:3;bottom:25px;left:50%;transform:translateX(-50%);border:1px solid var(--gold);background:linear-gradient(180deg,#2d2520,#110e0d);color:var(--gold2);padding:14px 34px;border-radius:999px;font-weight:700;letter-spacing:.16em;cursor:pointer;box-shadow:0 8px 28px #000;font-family:inherit}.start:hover{background:#352b23}
 .orn{color:var(--gold);letter-spacing:.25em;text-align:center;margin:0 0 20px;font-size:12px}.eyebrow{text-align:center;color:var(--gold);letter-spacing:.25em;text-transform:uppercase;font-size:12px;margin-bottom:12px}.paper h1{text-align:center;text-transform:uppercase;letter-spacing:.1em;font-size:clamp(25px,4vw,42px);margin:0 0 28px}.paper h2{color:var(--gold2);font-size:clamp(19px,3vw,28px);margin:0 0 16px}.paper h3{font-size:17px;color:var(--gold2);margin:25px 0 10px}.paper p,.paper li{font-family:Arial,Helvetica,sans-serif;font-size:clamp(14px,1.8vw,17px);line-height:1.7;color:#eee5dc}.paper ul,.paper ol{padding-left:24px}.paper li{margin:8px 0}.quote{border-left:3px solid var(--gold);padding:16px 20px;margin:20px 0;background:rgba(216,182,106,.055);color:#eee5dc;font-style:italic}.rolegrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:25px 0}.role{border:1px solid var(--line);background:linear-gradient(145deg,#241918,#100e0d);padding:24px;text-align:center;border-radius:6px}.role .symbol{font-size:34px;color:var(--gold);margin-bottom:8px}.role strong{display:block;font-size:20px;color:var(--gold2);margin-bottom:6px}.role span{font-family:Arial,sans-serif;color:var(--muted);font-size:14px}.rule{border-top:1px solid var(--line);padding-top:24px;margin-top:24px}.safe{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}.safe div{padding:18px 12px;border:1px solid var(--line);border-radius:6px;text-align:center;background:#111}.safe b{display:block;font:700 18px Arial,sans-serif;margin-bottom:8px}.green b{color:#55c878}.yellow b{color:#e7c34e}.red b{color:#e65d66}.field{margin:16px 0}.field label{display:block;color:var(--gold2);font-weight:700;margin-bottom:8px;font-family:Arial,sans-serif;font-size:14px}.field textarea{width:100%;min-height:95px;resize:vertical;background:#0c0b0b;color:#f4eee7;border:1px solid #5c493a;border-radius:5px;padding:12px;font:14px Arial,sans-serif}.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check{display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid var(--line);background:#100e0d;border-radius:5px;font:14px Arial,sans-serif;color:#eee}.check input{accent-color:var(--gold);margin-top:2px}.nav{position:fixed;z-index:20;left:50%;transform:translateX(-50%);bottom:14px;width:min(900px,calc(100% - 24px));display:flex;justify-content:space-between;gap:12px;padding:10px;background:rgba(10,8,8,.9);border:1px solid #4b3a30;border-radius:999px;backdrop-filter:blur(12px);box-shadow:0 10px 30px #000}.nav button{flex:1;border:1px solid #5c493a;background:#171210;color:#eee4d9;border-radius:999px;padding:11px 16px;font:700 13px Arial,sans-serif;cursor:pointer}.nav button.primary{border-color:var(--gold);color:var(--gold2);background:#231b17}.counter{position:fixed;left:50%;transform:translateX(-50%);bottom:53px;color:#9c8f83;font:11px Arial,sans-serif;z-index:20;white-space:nowrap}.hint{text-align:center;color:#a99b8f;font:12px Arial,sans-serif;margin-top:28px}.divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:28px 0}.end{text-align:center;padding:20px 0 10px}.end .seal{font-size:44px;color:var(--gold)}
 @media(max-width:620px){.app{padding:0 0 88px}.book,.page{min-height:calc(100vh - 88px);border-radius:0}.paper{padding:25px 20px}.rolegrid,.safe,.checks{grid-template-columns:1fr}.cover img{min-height:calc(100vh - 88px)}.cover-title{bottom:125px;font-size:30px}.nav{bottom:8px}.nav button{padding:10px 8px;font-size:12px}.counter{bottom:48px}.paper p,.paper li{font-size:14px;line-height:1.6}}
-.cover~.page{} .cover.active~*{}\n</style>
+.cover~.page{} .cover.active~*{}\n
+.login-screen{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 15%,#2a1515 0,#090808 55%,#050505 100%);display:flex;align-items:center;justify-content:center;padding:22px}.login-card{width:min(460px,100%);background:linear-gradient(145deg,#211817,#0d0b0b);border:1px solid #5b4737;border-radius:10px;box-shadow:0 25px 80px #000;padding:34px}.login-card h1{text-align:center;color:var(--gold2);font-size:clamp(24px,6vw,38px);letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}.login-card .login-sub{text-align:center;color:var(--muted);font:14px Arial,sans-serif;line-height:1.6;margin-bottom:25px}.login-field{margin:14px 0}.login-field label{display:block;color:var(--gold2);font:700 13px Arial,sans-serif;margin-bottom:7px}.login-field input{width:100%;padding:13px 14px;background:#0b0a0a;border:1px solid #5c493a;border-radius:6px;color:#fff;font:15px Arial,sans-serif;outline:none}.login-field input:focus{border-color:var(--gold)}.login-btn{width:100%;margin-top:10px;padding:14px;border-radius:999px;border:1px solid var(--gold);background:#231b17;color:var(--gold2);font:700 14px Arial,sans-serif;letter-spacing:.14em;cursor:pointer}.login-error{display:none;margin-top:14px;padding:11px;border:1px solid #7e171d;background:rgba(126,23,29,.15);border-radius:6px;color:#ffb9bd;font:13px Arial,sans-serif;text-align:center}.account{position:fixed;z-index:25;top:12px;right:12px;display:none}.account button{border:1px solid #5c493a;background:rgba(10,8,8,.88);color:#cdbfae;border-radius:999px;padding:8px 13px;font:700 11px Arial,sans-serif;cursor:pointer}.signature-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}.signature-box{border:1px solid var(--line);background:#100e0d;border-radius:6px;padding:16px}.signature-box h3{margin:0 0 10px}.signature-canvas{width:100%;height:150px;background:#f7f2ea;border:1px solid #8b735c;border-radius:5px;display:block;touch-action:none}.signature-actions{display:flex;gap:8px;margin-top:8px}.signature-actions button{flex:1;border:1px solid #5c493a;background:#171210;color:#eee4d9;border-radius:999px;padding:9px;font:700 11px Arial,sans-serif;cursor:pointer}.signature-status{font:11px Arial,sans-serif;color:#9c8f83;margin-top:7px;text-align:center}@media(max-width:620px){.signature-grid{grid-template-columns:1fr}.login-card{padding:26px 20px}}
+</style>
 </head>
 <body>
+
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <div class="orn">◆────────────── ◈ ──────────────◆</div>
+    <h1>Le Pacte</h1>
+    <div class="login-sub">Accès privé — Negan &amp; Lucille<br>Connectez-vous avec le compte commun du pacte.</div>
+    <form id="loginForm">
+      <div class="login-field"><label for="loginEmail">Adresse e-mail</label><input id="loginEmail" type="email" autocomplete="username" required></div>
+      <div class="login-field"><label for="loginPassword">Mot de passe</label><input id="loginPassword" type="password" autocomplete="current-password" required></div>
+      <button class="login-btn" type="submit">ACCÉDER AU PACTE →</button>
+      <div class="login-error" id="loginError"></div>
+    </form>
+  </div>
+</div>
+<div class="account" id="account"><button id="logout">DÉCONNEXION</button></div>
 <div class="app"><main class="book">
 <section class="page active cover">
 <img src="https://raw.githubusercontent.com/NeganSansPitie/neganlab/2e3fbcedf2a8e00c2c117b46c6a77670e4aafbcf/pages/5A45ACAD-D283-4D2B-9F6B-230FFDE9493D.png" alt="Negan & Lucille — couverture">
@@ -31,11 +48,141 @@ body{overflow-x:hidden}.app{min-height:100vh;display:flex;align-items:center;jus
 <section class="page"><div class="paper"><div class="eyebrow">Article 3</div><h1>LES OBLIGATIONS DU MAÎTRE</h1><ol><li>Respecter les limites clairement exprimées par la Soumise.</li><li>Ne jamais utiliser le jeu pour imposer une situation non consentie.</li><li>Rester attentif au bien-être physique et psychologique de sa Soumise.</li><li>Respecter immédiatement un signal d’arrêt.</li><li>Ne pas utiliser les informations personnelles ou intimes de la Soumise contre elle en dehors du jeu.</li><li>Maintenir une relation basée sur la confiance et le respect.</li><li>Accepter qu’une règle puisse être discutée ou modifiée d’un commun accord.</li></ol></div></section>
 <section class="page"><div class="paper"><div class="eyebrow">Article 4</div><h1>LE MOT DE SÉCURITÉ</h1><div class="safe"><div class="green"><b>VERT</b><span>Tout va bien, le jeu peut continuer.</span></div><div class="yellow"><b>JAUNE</b><span>Ralentissement ou vérification nécessaire. Le Maître doit vérifier la situation.</span></div><div class="red"><b>ROUGE</b><span>Arrêt immédiat du jeu.</span></div></div><div class="quote">Le mot <strong>ROUGE</strong> met immédiatement fin à toute action en cours.</div><div class="divider"></div><div class="eyebrow">Article 5</div><h1>LES LIMITES</h1><p>Avant le début du jeu, le Maître et la Soumise doivent définir clairement les limites applicables à la séance.</p><p>Les limites ainsi définies doivent être connues et acceptées par les deux partenaires avant le commencement du jeu.</p><p>Une fois la séance commencée et les limites établies, celles-ci constituent le cadre de la séance et ne peuvent pas être modifiées ou annulées en cours de jeu.</p><p>Les limites doivent donc être définies avec soin avant le début de chaque séance.</p></div></section>
 <section class="page"><div class="paper"><div class="eyebrow">Article 6</div><h1>LES CONSÉQUENCES</h1><p>En cas de non-respect volontaire d’une règle, le Maître peut appliquer une conséquence ou une punition prévue dans le cadre du jeu, conformément aux conséquences préalablement acceptées.</p><p>Les conséquences doivent rester adaptées au jeu et ne jamais avoir pour objectif de blesser, humilier réellement ou mettre en danger la Soumise.</p><div class="divider"></div><div class="eyebrow">Article 7</div><h1>LE RESPECT DU CONSENTEMENT</h1><div class="quote">Le consentement peut être retiré à tout moment.</div><p>Aucune règle de ce contrat ne peut empêcher Lucille de dire <strong>STOP</strong>.</p><p>Un consentement donné précédemment ne signifie pas automatiquement un consentement pour une nouvelle situation.</p><p>Le mot de sécurité et le retrait du consentement restent prioritaires sur toutes les autres règles.</p></div></section>
-<section class="page"><div class="paper"><div class="eyebrow">Article 8</div><h1>APRÈS LE JEU</h1><p>Après une séance, le Maître et la Soumise prennent le temps de communiquer.</p><p>Ils peuvent notamment discuter de ce qui a été apprécié, de ce qui a été moins apprécié, des éventuelles limites rencontrées et des ajustements nécessaires pour une prochaine séance.</p><div class="divider"></div><div class="eyebrow">Article 9</div><h1>DURÉE</h1><p>Ce contrat prend effet à partir du : ____ / ____ / ______</p><p>Il reste valable uniquement dans le cadre du jeu BDSM convenu entre les deux partenaires.</p><p>Il peut être suspendu ou annulé à tout moment par l’un ou l’autre.</p><div class="divider"></div><div class="eyebrow">Article 10</div><h1>CARACTÈRE DÉFINITIF DU RÈGLEMENT</h1><p>Une fois les règles de base établies, lues et acceptées par la Soumise, celles-ci constituent le règlement de référence du jeu entre le Maître et la Soumise.</p><p>La Soumise reconnaît avoir pris connaissance de l’ensemble des règles avant de les accepter.</p></div></section>
+<section class="page"><div class="paper"><div class="eyebrow">Article 8</div><h1>APRÈS LE JEU</h1><p>Après une séance, le Maître et la Soumise prennent le temps de communiquer.</p><p>Ils peuvent notamment discuter de ce qui a été apprécié, de ce qui a été moins apprécié, des éventuelles limites rencontrées et des ajustements nécessaires pour une prochaine séance.</p><div class="divider"></div><div class="eyebrow">Article 9</div><h1>DURÉE</h1><div class="field"><label for="dateEffet">Date de prise d’effet</label><input id="dateEffet" type="date" style="width:100%;padding:12px;background:#0c0b0b;color:#f4eee7;border:1px solid #5c493a;border-radius:5px;font:14px Arial,sans-serif"></div><p>Il reste valable uniquement dans le cadre du jeu BDSM convenu entre les deux partenaires.</p><p>Il peut être suspendu ou annulé à tout moment par l’un ou l’autre.</p><div class="divider"></div><div class="eyebrow">Article 10</div><h1>CARACTÈRE DÉFINITIF DU RÈGLEMENT</h1><p>Une fois les règles de base établies, lues et acceptées par la Soumise, celles-ci constituent le règlement de référence du jeu entre le Maître et la Soumise.</p><p>La Soumise reconnaît avoir pris connaissance de l’ensemble des règles avant de les accepter.</p></div></section>
 <section class="page"><div class="paper"><div class="eyebrow">Article 10 — suite</div><h1>LE RÈGLEMENT DE RÉFÉRENCE</h1><p>Une fois le règlement accepté, aucune modification ne pourra être imposée unilatéralement par le Maître. Toute nouvelle règle ou modification devra être clairement présentée et acceptée par les deux partenaires avant de faire partie du règlement.</p><p>La Soumise s’engage à respecter les règles qu’elle a acceptées pendant les périodes de jeu prévues.</p><p>Le mot de sécurité <strong>ROUGE</strong> et le retrait du consentement restent prioritaires sur toute autre règle.</p><div class="divider"></div><div class="eyebrow">Article 11</div><h1>RÈGLE DU RÉVEIL DU MAÎTRE</h1><p>Lorsque le Maître est profondément endormi, la Soumise est autorisée, dans le cadre préalablement convenu entre eux, à prendre elle-même l’initiative de le réveiller de manière sensuelle, entreprenante et suggestive.</p><p>La Soumise ne doit pas attendre que le Maître lui demande de venir le réveiller : lorsqu’elle choisit d’appliquer cette règle, elle prend spontanément l’initiative et vient réveiller le Maître en adoptant une attitude volontaire et entreprenante afin d’initier le moment intime convenu entre eux.</p><p>Le Maître s’engage à accueillir favorablement cette initiative de la Soumise et à ne pas la rejeter simplement par principe lorsqu’elle applique une règle préalablement acceptée.</p><p>Cette règle ne constitue toutefois pas une obligation pour le Maître de poursuivre le jeu dans toutes les circonstances : les limites, le consentement et le mot de sécurité définis dans le présent règlement restent applicables.</p></div></section>
-<section class="page"><div class="paper"><div class="eyebrow">Avant chaque séance</div><h1>FICHE DES LIMITES &amp; PRÉFÉRENCES</h1><div class="field"><label>Limites absolues de Lucille</label><textarea placeholder="À définir avant la séance…"></textarea></div><div class="field"><label>Limites applicables à la séance</label><textarea placeholder="À définir avant la séance…"></textarea></div><div class="field"><label>Points à discuter avant le début du jeu</label><textarea placeholder="À définir avant la séance…"></textarea></div><div class="divider"></div><div class="eyebrow">Conséquences autorisées</div><div class="checks"><label class="check"><input type="checkbox"> Privation temporaire d’un privilège de jeu</label><label class="check"><input type="checkbox"> Défi ou tâche supplémentaire</label><label class="check"><input type="checkbox"> Punition symbolique</label><label class="check"><input type="checkbox"> Autre : __________________________</label></div><p class="hint">Ces champs sont uniquement destinés à préparer la séance. Ils ne sont pas enregistrés automatiquement.</p></div></section>
-<section class="page"><div class="paper"><div class="eyebrow">Règle supplémentaire</div><h1>AJOUT AU RÈGLEMENT</h1><div class="quote">Une règle peut être ajoutée uniquement si les deux partenaires l’ont comprise et acceptée.</div><div class="field"><label>Règle n° ____</label><textarea placeholder="Écrire ici la règle supplémentaire…"></textarea></div><div class="rolegrid"><div class="role"><strong>Negan</strong><span>Acceptée par le Maître</span></div><div class="role"><strong>Lucille</strong><span>Acceptée par la Soumise</span></div></div><div class="divider"></div><div class="end"><div class="seal">◈</div><h2>FIN DU PACTE</h2><p>Ce règlement reste fondé sur la confiance, le respect, la communication et le consentement mutuel.</p><p class="hint">Les signatures sont volontairement laissées hors de cette application et peuvent être réalisées séparément entre les deux partenaires.</p></div></div></section>
+<section class="page"><div class="paper"><div class="eyebrow">Avant chaque séance</div><h1>FICHE DES LIMITES &amp; PRÉFÉRENCES</h1><div class="field"><label>Limites absolues de Lucille</label><textarea id="limitesAbsolues" placeholder="À définir avant la séance…"></textarea></div><div class="field"><label>Limites applicables à la séance</label><textarea id="limitesSeance" placeholder="À définir avant la séance…"></textarea></div><div class="field"><label>Points à discuter avant le début du jeu</label><textarea id="pointsDiscussion" placeholder="À définir avant la séance…"></textarea></div><div class="divider"></div><div class="eyebrow">Conséquences autorisées</div><div class="checks"><label class="check"><input id="consequencePrivilege" type="checkbox"> Privation temporaire d’un privilège de jeu</label><label class="check"><input id="consequenceDefi" type="checkbox"> Défi ou tâche supplémentaire</label><label class="check"><input id="consequenceSymbolique" type="checkbox"> Punition symbolique</label><label class="check"><input id="consequenceAutreCheck" type="checkbox"> Autre : <input id="consequenceAutre" type="text" style="flex:1;background:#0c0b0b;color:#fff;border:1px solid #5c493a;border-radius:4px;padding:6px"></label></div><p class="hint">Ces champs sont uniquement destinés à préparer la séance. Ils ne sont pas enregistrés automatiquement.</p></div></section>
+<section class="page"><div class="paper"><div class="eyebrow">Règle supplémentaire</div><h1>AJOUT AU RÈGLEMENT</h1><div class="quote">Une règle peut être ajoutée uniquement si les deux partenaires l’ont comprise et acceptée.</div><div class="field"><label for="regleNumero">Règle n° ____</label><textarea id="regleSupplementaire" placeholder="Écrire ici la règle supplémentaire…"></textarea></div><div class="rolegrid"><div class="role"><strong>Negan</strong><span>Acceptée par le Maître</span></div><div class="role"><strong>Lucille</strong><span>Acceptée par la Soumise</span></div></div><div class="divider"></div>
+<h2 style="text-align:center">SIGNATURES</h2>
+<p class="hint">Les signatures sont dessinées directement sur l’écran puis enregistrées avec le pacte.</p>
+<div class="signature-grid">
+  <div class="signature-box"><h3>Signature de Negan</h3><canvas id="sigNegan" class="signature-canvas"></canvas><div class="signature-actions"><button type="button" onclick="clearSignature('negan')">EFFACER</button><button type="button" onclick="saveSignature('negan')">VALIDER</button></div><div id="sigStatusNegan" class="signature-status"></div></div>
+  <div class="signature-box"><h3>Signature de Lucille</h3><canvas id="sigLucille" class="signature-canvas"></canvas><div class="signature-actions"><button type="button" onclick="clearSignature('lucille')">EFFACER</button><button type="button" onclick="saveSignature('lucille')">VALIDER</button></div><div id="sigStatusLucille" class="signature-status"></div></div>
+</div>
+<div class="divider"></div><div class="end"><div class="seal">◈</div><h2>FIN DU PACTE</h2><p>Ce règlement reste fondé sur la confiance, le respect, la communication et le consentement mutuel.</p><p class="hint">Les signatures sont volontairement laissées hors de cette application et peuvent être réalisées séparément entre les deux partenaires.</p></div></div></section>
 </main></div>
 <div class="counter" id="counter">1 / 10</div><nav class="nav"><button id="prev" onclick="go(current-1)">← RETOUR</button><button id="next" class="primary" onclick="go(current+1)">SUIVANT →</button></nav>
-<script>const pages=[...document.querySelectorAll('.page')];let current=0;function go(n){if(n<0)n=0;if(n>=pages.length)n=pages.length-1;pages[current].classList.remove('active');current=n;pages[current].classList.add('active');document.querySelector('.nav').style.display=current===0?'none':'flex';document.getElementById('counter').style.display=current===0?'none':'block';document.getElementById('counter').textContent=(current+1)+' / '+pages.length;document.getElementById('prev').disabled=current===0;document.getElementById('next').textContent=current===pages.length-1?'RECOMMENCER ↻':'SUIVANT →';if(current===pages.length-1)document.getElementById('next').onclick=()=>go(0);else document.getElementById('next').onclick=()=>go(current+1);window.scrollTo({top:0,behavior:'smooth'})}go(0);document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(current+1);if(e.key==='ArrowLeft')go(current-1)});</script>
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const SUPABASE_URL='https://neeapclzixzvlusvdsik.supabase.co';
+const SUPABASE_KEY='sb_publishable_OOL9AZ_aAkUkP-HIUxLgnA_6NkWJ85Z';
+const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
+
+const pages=[...document.querySelectorAll('.page')];
+let current=0, state={}, saveTimer=null, suppressSave=false;
+const loginScreen=document.getElementById('loginScreen');
+const account=document.getElementById('account');
+const loginError=document.getElementById('loginError');
+
+function setLoginError(msg){loginError.textContent=msg;loginError.style.display='block'}
+function showApp(){loginScreen.style.display='none';account.style.display='block';go(0)}
+function go(n){
+  if(n<0)n=0;if(n>=pages.length)n=pages.length-1;
+  pages[current].classList.remove('active');current=n;pages[current].classList.add('active');
+  document.querySelector('.nav').style.display=current===0?'none':'flex';
+  document.getElementById('counter').style.display=current===0?'none':'block';
+  document.getElementById('counter').textContent=(current+1)+' / '+pages.length;
+  document.getElementById('prev').disabled=current===0;
+  document.getElementById('next').textContent=current===pages.length-1?'RECOMMENCER ↻':'SUIVANT →';
+  document.getElementById('next').onclick=()=>current===pages.length-1?go(0):go(current+1);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function readForm(){
+  state.date_effet=document.getElementById('dateEffet')?.value||'';
+  state.limites_absolues=document.getElementById('limitesAbsolues')?.value||'';
+  state.limites_seance=document.getElementById('limitesSeance')?.value||'';
+  state.points_discussion=document.getElementById('pointsDiscussion')?.value||'';
+  state.consequence_privilege=!!document.getElementById('consequencePrivilege')?.checked;
+  state.consequence_defi=!!document.getElementById('consequenceDefi')?.checked;
+  state.consequence_symbolique=!!document.getElementById('consequenceSymbolique')?.checked;
+  state.consequence_autre_check=!!document.getElementById('consequenceAutreCheck')?.checked;
+  state.consequence_autre=document.getElementById('consequenceAutre')?.value||'';
+  state.regle_numero=document.getElementById('regleNumero')?.value||'';
+  state.regle_supplementaire=document.getElementById('regleSupplementaire')?.value||'';
+  return state;
+}
+function writeForm(s){
+  suppressSave=true;
+  state=s||{};
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.value=v??''};
+  const chk=(id,v)=>{const e=document.getElementById(id);if(e)e.checked=!!v};
+  set('dateEffet',state.date_effet);set('limitesAbsolues',state.limites_absolues);set('limitesSeance',state.limites_seance);set('pointsDiscussion',state.points_discussion);
+  chk('consequencePrivilege',state.consequence_privilege);chk('consequenceDefi',state.consequence_defi);chk('consequenceSymbolique',state.consequence_symbolique);chk('consequenceAutreCheck',state.consequence_autre_check);
+  set('consequenceAutre',state.consequence_autre);set('regleNumero',state.regle_numero);set('regleSupplementaire',state.regle_supplementaire);
+  suppressSave=false;
+}
+async function saveData(){
+  if(suppressSave)return;
+  const contenu=readForm();
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(async()=>{
+    const {error}=await supabase.from('pacte').update({contenu,updated_at:new Date().toISOString()}).eq('id',1);
+    if(error) console.error('Sauvegarde:',error);
+  },350);
+}
+document.querySelectorAll('textarea,input[type="text"],input[type="date"],input[type="checkbox"]').forEach(e=>e.addEventListener('input',saveData));
+document.querySelectorAll('input[type="checkbox"]').forEach(e=>e.addEventListener('change',saveData));
+
+async function loadData(){
+  const {data,error}=await supabase.from('pacte').select('*').eq('id',1).single();
+  if(error){console.error(error);return}
+  writeForm(data?.contenu||{});
+  drawSaved('negan',data?.signature_negan);
+  drawSaved('lucille',data?.signature_lucille);
+}
+function dataUrlFromCanvas(canvas){return canvas.toDataURL('image/png')}
+async function saveSignature(who){
+  const canvas=document.getElementById(who==='negan'?'sigNegan':'sigLucille');
+  const data=dataUrlFromCanvas(canvas);
+  if(data.length<2000){document.getElementById(who==='negan'?'sigStatusNegan':'sigStatusLucille').textContent='Dessinez votre signature avant de valider.';return}
+  const col=who==='negan'?'signature_negan':'signature_lucille';
+  const dateCol=who==='negan'?'date_signature_negan':'date_signature_lucille';
+  const payload={[col]:data,[dateCol]:new Date().toISOString()};
+  const {error}=await supabase.from('pacte').update(payload).eq('id',1);
+  const el=document.getElementById(who==='negan'?'sigStatusNegan':'sigStatusLucille');
+  el.textContent=error?'Erreur de sauvegarde.':'Signature enregistrée ✓';
+  if(error)console.error(error);
+}
+window.saveSignature=saveSignature;
+window.clearSignature=function(who){
+  const canvas=document.getElementById(who==='negan'?'sigNegan':'sigLucille');
+  const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);
+  document.getElementById(who==='negan'?'sigStatusNegan':'sigStatusLucille').textContent='';
+};
+function setupCanvas(id){
+  const canvas=document.getElementById(id); if(!canvas)return;
+  const resize=()=>{const rect=canvas.getBoundingClientRect();const old=canvas.toDataURL();canvas.width=Math.max(1,Math.floor(rect.width*devicePixelRatio));canvas.height=Math.max(1,Math.floor(rect.height*devicePixelRatio));const ctx=canvas.getContext('2d');ctx.scale(devicePixelRatio,devicePixelRatio);if(old.length>100) {const im=new Image();im.onload=()=>ctx.drawImage(im,0,0,rect.width,rect.height);im.src=old;}};
+  resize();window.addEventListener('resize',resize);
+  const ctx=canvas.getContext('2d');ctx.lineWidth=2;ctx.lineCap='round';ctx.strokeStyle='#1b1714';let drawing=false;
+  const pos=e=>{const r=canvas.getBoundingClientRect();const p=e.touches?e.touches[0]:e;return [p.clientX-r.left,p.clientY-r.top]};
+  const start=e=>{e.preventDefault();drawing=true;const [x,y]=pos(e);ctx.beginPath();ctx.moveTo(x,y)};
+  const move=e=>{if(!drawing)return;e.preventDefault();const [x,y]=pos(e);ctx.lineTo(x,y);ctx.stroke()};
+  const end=e=>{if(drawing){drawing=false;ctx.closePath()}};
+  canvas.addEventListener('pointerdown',start);canvas.addEventListener('pointermove',move);canvas.addEventListener('pointerup',end);canvas.addEventListener('pointerleave',end);
+}
+function drawSaved(who,data){
+  if(!data)return;
+  const canvas=document.getElementById(who==='negan'?'sigNegan':'sigLucille');if(!canvas)return;
+  const im=new Image();im.onload=()=>{const ctx=canvas.getContext('2d');ctx.clearRect(0,0,canvas.width,canvas.height);ctx.drawImage(im,0,0,canvas.width/devicePixelRatio,canvas.height/devicePixelRatio)};im.src=data;
+  document.getElementById(who==='negan'?'sigStatusNegan':'sigStatusLucille').textContent='Signature enregistrée ✓';
+}
+async function startRealtime(){
+  await supabase.channel('pacte-live').on('postgres_changes',{event:'UPDATE',schema:'public',table:'pacte',filter:'id=eq.1'},payload=>{
+    writeForm(payload.new.contenu||{});
+    drawSaved('negan',payload.new.signature_negan);drawSaved('lucille',payload.new.signature_lucille);
+  }).subscribe();
+}
+document.getElementById('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();loginError.style.display='none';
+  const email=document.getElementById('loginEmail').value.trim(),password=document.getElementById('loginPassword').value;
+  const {error}=await supabase.auth.signInWithPassword({email,password});
+  if(error)setLoginError('Connexion impossible. Vérifiez votre adresse e-mail et votre mot de passe.');
+});
+document.getElementById('logout').addEventListener('click',async()=>{await supabase.auth.signOut();location.reload()});
+supabase.auth.onAuthStateChange(async(event,session)=>{
+  if(session){showApp();setTimeout(()=>{setupCanvas('sigNegan');setupCanvas('sigLucille');loadData();startRealtime()},50)}
+  else{loginScreen.style.display='flex';account.style.display='none'}
+});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'&&!e.target.matches('input,textarea'))go(current+1);if(e.key==='ArrowLeft'&&!e.target.matches('input,textarea'))go(current-1)});
+</script>
 </body></html>
