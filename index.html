@@ -140,7 +140,7 @@ async function saveData(){
     if(error) console.error('Sauvegarde:',error);
   },350);
 }
-document.querySelectorAll('textarea,input[type="text"],input[type="date"],input[type="time"],input[type="checkbox"]').forEach(e=>e.addEventListener('input',saveData));
+document.querySelectorAll('textarea,input[type="text"],input[type="date"],input[type="time"],input[type="checkbox"]').forEach(e=>{if(e.id!=='mentionNegan'&&e.id!=='mentionLucille')e.addEventListener('input',saveData)});
 document.querySelectorAll('input[type="checkbox"]').forEach(e=>e.addEventListener('change',saveData));
 
 async function loadData(){
